@@ -39,10 +39,10 @@ app.post('/anon', function (req, res) {
     if (err) {
       console.log(err.name + ': ' + err.message);
       res.status(500).send('Internal Error');
-    } else {
-      console.log('successfully sent message');
-      res.status(200).send('OK');
+      return;
     }
+    console.log('successfully sent message');
+    res.status(200).send('OK');
   });
 
 });
