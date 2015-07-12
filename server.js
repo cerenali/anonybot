@@ -13,6 +13,8 @@ app.use(bodyParser.json());
 
 var slack = new PrettySlack(config.slackToken);
 
+var channel = '#anonybot';
+
 app.get('/', function (req, res) {
   res.send('Hello world!');
 });
@@ -35,14 +37,14 @@ app.post('/anon', function (req, res) {
     return;
   }
 
-  slack.chat('#anonybot', message, {}, function (err) {
+  slack.chat(channel, message, {}, function (err) {
     if (err) {
       console.log(err.name + ': ' + err.message);
-      res.status(500).send('Internal Error');
+      res.status(500).send('Internal error; see logs for details');
       return;
     }
-    console.log('successfully sent message');
-    res.status(200).send('OK');
+    console.log('successfully sent message to ' + channel);
+    res.status(200).send('message sent to ' + channel);
   });
 
 });
