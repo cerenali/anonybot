@@ -3,7 +3,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var config = require('./config');
-// var PrettySlack = require('pretty-slack').PrettySlack;
+var PrettySlack = require('pretty-slack').PrettySlack;
 
 var app = express();
 app.use(bodyParser.urlencoded({
@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-// var slack = new PrettySlack(config.slackToken);
+var slack = new PrettySlack(config.slackToken);
 
 app.get('/', function (req, res) {
   res.send('Hello world!');
