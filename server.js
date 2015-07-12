@@ -17,34 +17,34 @@ app.get('/', function (req, res) {
   res.send('Hello world!');
 });
 
-// app.get('/anon', function (req, res) {
-//   res.send('You\'ve reached the Anon page');
-// });
+app.get('/anon', function (req, res) {
+  res.send('You\'ve reached the Anon page');
+});
 
-// app.post('/anon', function (req, res) {
-//   var token = req.body.token;
-//   if (!token || token !== config.slackPostToken) {
-//     res.status(401).send('Unauthorized');
-//     return;
-//   }
+app.post('/anon', function (req, res) {
+  var token = req.body.token;
+  if (!token || token !== config.slackPostToken) {
+    res.status(401).send('Unauthorized');
+    return;
+  }
 
-//   console.log('received POST request to /confession');
+  console.log('received POST request to /confession');
 
-//   var message = req.body.text;
+  var message = req.body.text;
 
-//   if (!message) {
-//     console.log('something went wrong....message has no text');
-//   }
+  if (!message) {
+    console.log('something went wrong....message has no text');
+  }
 
-//   slack.chat('#bot-test', message, {}, function (err, res) {
-//     if (err) {
-//       console.log(err.name + ': ' + err.message);
-//     } else {
-//       console.log('successfully sent message');
-//     }
-//   });
+  slack.chat('#bot-test', message, {}, function (err, res) {
+    if (err) {
+      console.log(err.name + ': ' + err.message);
+    } else {
+      console.log('successfully sent message');
+    }
+  });
 
-// });
+});
 
 app.listen(process.env.PORT || 3001);
 console.log('Starting anonybot on port 3001...');
