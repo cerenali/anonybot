@@ -35,7 +35,7 @@ app.post('/anon', function (req, res) {
     return;
   }
 
-  slack.chat('#anonybot', message, {}, function (err, res) {
+  slack.chat('#anonybot', message, {}, function (err) {
     if (err) {
       console.log(err.name + ': ' + err.message);
       res.status(500).send('Internal Error');
