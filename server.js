@@ -19,11 +19,11 @@ app.get('/', function (req, res) {
   res.send('Hello world');
 });
 
-app.get('/confession', function (req, res) {
-  res.send('You\'ve reached the Confession page');
+app.get('/anon', function (req, res) {
+  res.send('You\'ve reached the Anon page');
 });
 
-app.post('/confession', function (req, res) {
+app.post('/anon', function (req, res) {
   var token = req.body.token;
   if (!token || token !== config.slackPostToken) {
     res.status(401).send('Unauthorized');
