@@ -44,7 +44,7 @@ app.post('/anon', function (req, res) {
       return;
     }
     console.log('successfully sent message to ' + channel);
-    res.status(200).send('message sent to ' + channel);
+    res.status(200).send('message successfully sent to ' + channel);
   });
 
 });
