@@ -3,7 +3,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var config = require('./config');
-var PrettySlack = require('pretty-slack').PrettySlack;
+// var PrettySlack = require('pretty-slack').PrettySlack;
 
 var app = express();
 app.use(bodyParser.urlencoded({
@@ -11,38 +11,41 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-var slack = new PrettySlack(config.slackToken);
+// var slack = new PrettySlack(config.slackToken);
 
+console.log('here');
 
 app.get('/', function (req, res) {
   res.send('Hello world');
 });
 
-app.get('/anon', function (req, res) {
-  res.send('You\'ve reached the Anon page');
-});
+// app.get('/anon', function (req, res) {
+//   res.send('You\'ve reached the Anon page');
+// });
 
-app.post('/anon', function (req, res) {
-  var token = req.body.token;
-  if (!token || token !== config.slackPostToken) {
-    res.status(401).send('Unauthorized');
-    return;
-  }
+// app.post('/anon', function (req, res) {
+//   var token = req.body.token;
+//   if (!token || token !== config.slackPostToken) {
+//     res.status(401).send('Unauthorized');
+//     return;
+//   }
 
-  console.log('received POST request to /confession');
+//   console.log('received POST request to /confession');
 
-  var message = req.body.text;
+//   var message = req.body.text;
 
-  if (!message) {
-    console.log('something went wrong....message has no text');
-  }
+//   if (!message) {
+//     console.log('something went wrong....message has no text');
+//   }
 
-  slack.chat('#bot-test', message, {}, function (err, res) {
-    if (err) {
-      console.log(err.name + ': ' + err.message);
-    } else {
-      console.log('successfully sent message');
-    }
-  });
+//   slack.chat('#bot-test', message, {}, function (err, res) {
+//     if (err) {
+//       console.log(err.name + ': ' + err.message);
+//     } else {
+//       console.log('successfully sent message');
+//     }
+//   });
 
-});
+// });
+
+console.log('end');
