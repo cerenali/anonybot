@@ -2,6 +2,7 @@
   "name": "anonybot",
   "version": "1.0.0",
   "description": "send anonymous messages to slack",
+  "private": true,
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
