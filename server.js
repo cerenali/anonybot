@@ -19,6 +19,7 @@ app.get('/', function (req, res) {
 
 app.post('/anon', function (req, res) {
   var token = req.body.token;
+
   if (!token || token !== config.slackPostToken) {
     res.status(401).send('Unauthorized');
     return;
@@ -30,13 +31,14 @@ app.post('/anon', function (req, res) {
 
   if (!message) {
     console.log('something went wrong....message has no text');
-    res.status(500).send('Internal Error');
+    res.status(500).send('Cannot send empty message');
     return;
   }
 
   slack.chat('#anonybot', message, {}, function (err, res) {
     if (err) {
       console.log(err.name + ': ' + err.message);
+      res.status(500).send('Internal Error');
     } else {
       console.log('successfully sent message');
       res.status(200).send('OK');
