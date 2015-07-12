@@ -30,6 +30,7 @@ app.post('/anon', function (req, res) {
 
   if (!message) {
     console.log('something went wrong....message has no text');
+    res.status(500).send('Internal Error');
     return;
   }
 
@@ -38,6 +39,7 @@ app.post('/anon', function (req, res) {
       console.log(err.name + ': ' + err.message);
     } else {
       console.log('successfully sent message');
+      res.status(200).send('OK');
     }
   });
 
