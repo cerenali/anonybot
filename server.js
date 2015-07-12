@@ -17,10 +17,6 @@ app.get('/', function (req, res) {
   res.send('Hello world!');
 });
 
-app.get('/anon', function (req, res) {
-  res.send('You\'ve reached the Anon page');
-});
-
 app.post('/anon', function (req, res) {
   var token = req.body.token;
   if (!token || token !== config.slackPostToken) {
@@ -34,6 +30,7 @@ app.post('/anon', function (req, res) {
 
   if (!message) {
     console.log('something went wrong....message has no text');
+    return;
   }
 
   slack.chat('#anonybot', message, {}, function (err, res) {
