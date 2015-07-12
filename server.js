@@ -13,10 +13,8 @@ app.use(bodyParser.json());
 
 // var slack = new PrettySlack(config.slackToken);
 
-console.log('here');
-
 app.get('/', function (req, res) {
-  res.send('Hello world');
+  res.send('Hello world!');
 });
 
 // app.get('/anon', function (req, res) {
@@ -48,4 +46,5 @@ app.get('/', function (req, res) {
 
 // });
 
-console.log('end');
+app.listen(process.env.PORT || 3001);
+console.log('Starting anonybot on port 3001...');
