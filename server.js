@@ -28,7 +28,7 @@ app.post('/anon', function (req, res) {
     return;
   }
 
-  console.log('received POST request to /confession');
+  console.log('received POST request to /anon');
 
   var message = req.body.text;
 
@@ -36,7 +36,7 @@ app.post('/anon', function (req, res) {
     console.log('something went wrong....message has no text');
   }
 
-  slack.chat('#bot-test', message, {}, function (err, res) {
+  slack.chat('#anonybot', message, {}, function (err, res) {
     if (err) {
       console.log(err.name + ': ' + err.message);
     } else {
